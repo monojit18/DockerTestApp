@@ -1,21 +1,24 @@
 {
-  "name": "dockertestapp",
+  "name": "anotherdockertestapp",
   "version": "1.0.1",
-  "description": "Test Docker",
-  "main": "dockerserver.js",
+  "description": "Test Another Docker",
+  "main": "anotherdockerserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "mkdir -p logs",
     "install": "npm install --save-dev express body-parser request",
-    "start": "node dockerserver.js 1> logs/dockerseerver.log 2>& 1"
+    "start": "node anotherdockerserver.js 1> logs/anotherdockerserver.log 2>& 1"
   },
   "keywords": [
-    "docker"
+    "docker",
+    "another docker"
   ],
   "author": "Monojit Datta",
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "request": "^2.88.0"
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "semaphore": "^1.1.0"
   }
 }

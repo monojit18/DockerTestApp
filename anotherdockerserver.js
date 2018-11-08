@@ -7,7 +7,6 @@ const HttpsClient = require("request");
 
 const _express = Express();
 const _httpServer = Http.createServer(_express);
-const _httpsClient = HttpsClient;
 
 _express.use(BodyParser.json
 ({
@@ -23,29 +22,45 @@ _express.use(BodyParser.urlencoded
 
 }));
 
-_express.get('/org', (req, res) =>
+_express.get('/org1', (req, res) =>
 {
-    res.send('This is dockertest GET\n');
+
+    var options =
+    {
+
+        "json" : true,
+        "url" : "http://dockertestapp:7004/org",        
+        "method" : "GET"
+
+    };
+
+    HttpsClient(options, (error, response, responseBody) =>
+    {
+                
+        res.send(responseBody);
+
+    });
+    
 });
 
-_express.post('/org/post', (req, res) =>
+_express.post('/org1/post', (req, res) =>
 {
     
-    res.send('This is dockertest POST\n');
+    res.send('This is another dockertest POST\n');
 
 });
 
-_express.put('/org/put', (req, res) =>
+_express.put('/org1/put', (req, res) =>
 {
     
     var bodyParameters = req.body;
     console.log(bodyParameters);
-    let result = "result:" + bodyParameters;
+    let result = "result1:" + bodyParameters;
     res.send(result);
 
 });
 
-let port = process.env.PORT || 7003;
+let port = process.env.PORT || 7005;
 let host = "0.0.0.0";
 _httpServer.listen(port, host, function ()
 {

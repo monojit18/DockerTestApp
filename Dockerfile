@@ -9,6 +9,6 @@ RUN npm install --unsafe-perm
 
 COPY . /Users/monojitdattams/Projects/AnotherDockerApp/
 
-EXPOSE 7004
+EXPOSE 7005
 
 CMD npm start
