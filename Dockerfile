@@ -1,13 +1,13 @@
 FROM node:8
 
 # Create app directory
-WORKDIR /Users/monojitdattams/Projects/AnotherDockerApp
+WORKDIR /Users/monojitdattams/Projects/DockerApp
 
-COPY package*.json /Users/monojitdattams/Projects/AnotherDockerApp/
+COPY package*.json /Users/monojitdattams/Projects/DockerApp/
 
 RUN npm install --unsafe-perm
 
-COPY . /Users/monojitdattams/Projects/AnotherDockerApp/
+COPY . /Users/monojitdattams/Projects/DockerApp/
 
 EXPOSE 7005
 
