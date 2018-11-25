@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 
+
 const Express = require('express');
 const BodyParser = require('body-parser');
 const Http = require("http");
@@ -22,41 +23,17 @@ _express.use(BodyParser.urlencoded
 
 }));
 
-_express.get('/org1', (req, res) =>
+_express.get('/api', (req, res) =>
 {
 
-    var options =
-    {
-
-        "json" : true,
-        "url" : "http://dockertestapp:7004/org",        
-        "method" : "GET"
-
-    };
-
-    HttpsClient(options, (error, response, responseBody) =>
-    {
-                
-        res.send(responseBody);
-
-    });
+    res.send("Welcome to Docker Test GET");
     
 });
 
-_express.post('/org1/post', (req, res) =>
+_express.post('/api/post', (req, res) =>
 {
     
-    res.send('This is another dockertest POST\n');
-
-});
-
-_express.put('/org1/put', (req, res) =>
-{
-    
-    var bodyParameters = req.body;
-    console.log(bodyParameters);
-    let result = "result1:" + bodyParameters;
-    res.send(result);
+    res.send('This is a dockertest POST\n');
 
 });
 
