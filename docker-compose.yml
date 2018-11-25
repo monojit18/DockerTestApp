@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+    another_docker_test_app:
+        image: workshopregistry.azurecr.io/anotherdockertestapp:v1.0.2
+        container_name: another_docker_test
+        deploy:
+            replicas: 2
+            resources:
+                limits:
+                    cpus: "0.25"
+                    memory: "50M"
+            restart_policy:
+                condition: "on-failure"
+        ports:
+            - "9006:7006"
+        networks:
+            - default
+networks:
+    default:
+        name: compose_network
+
+        
