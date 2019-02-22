@@ -29,7 +29,7 @@ _express.get('/api', (req, res) =>
     {
 
         "json" : true,
-        "url" : "http://docker_test:7005/api",        
+        "url" : "http://another-docker-workshop:7007/api",        
         "method" : "GET"
 
     };
@@ -37,7 +37,7 @@ _express.get('/api', (req, res) =>
     HttpsClient(options, (error, response, responseBody) =>
     {
                 
-        res.send('This is another dockertest GET\n' + responseBody);
+        res.send('This is dockerworkhop GET\n' + responseBody);
 
     });
     
@@ -46,7 +46,7 @@ _express.get('/api', (req, res) =>
 _express.post('/api/post', (req, res) =>
 {
     
-    res.send('This is another dockertest POST\n');
+    res.send('This is dockerworkhop POST\n');
 
 });
 
