@@ -1,13 +1,13 @@
 {
-  "name": "anotherdockerworkshopapp",
-  "version": "2.0.7",
+  "name": "dockerworkshopapp",
+  "version": "2.2.4",
   "description": "Test Another Docker",
-  "main": "anotherdockerserver.js",
+  "main": "dockerserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "mkdir -p logs",
     "install": "npm install --save-dev express body-parser request redis",
-    "start": "node anotherdockerserver.js 1> logs/anotherdockerserver.log 2>& 1"
+    "start": "node dockerserver.js 1> logs/dockerserver.log 2>& 1"
   },
   "keywords": [
     "docker",
