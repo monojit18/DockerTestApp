@@ -4,6 +4,7 @@ const Express = require('express');
 const BodyParser = require('body-parser');
 const Http = require("http");
 const HttpsClient = require("request");
+const Redis = require("redis");
 
 const _express = Express();
 const _httpServer = Http.createServer(_express);
@@ -25,37 +26,23 @@ _express.use(BodyParser.urlencoded
 _express.get('/api', (req, res) =>
 {
 
-    var options =
-    {
-
-        "json" : true,
-        "url" : "http://docker_test:7005/api",        
-        "method" : "GET"
-
-    };
-
-    HttpsClient(options, (error, response, responseBody) =>
-    {
-                
-        res.send('This is another dockertest GET\n' + responseBody);
-
-    });
+    res.send("This is another workshop_docker GET\n");
     
 });
 
 _express.post('/api/post', (req, res) =>
 {
     
-    res.send('This is another dockertest POST\n');
+    res.send('This is another workshop_docker POST\n');
 
 });
 
-let port = process.env.PORT || 7006;
+let port = process.env.PORT || 7007;
 let host = "0.0.0.0";
 _httpServer.listen(port, host, function ()
 {
 
-    console.log(`Docker container started the server on port ${_httpServer.address().port}\n`);
+    console.log(`Another Docker container started the server on port ${_httpServer.address().port}\n`);
 
 });
 
