@@ -1,7 +1,7 @@
 version: "3.5"
 services:
-    docker-workshop:
-        image: workshopregistry.azurecr.io/dockerworkshopapp:v2.2.1
+    docker_workshop:
+        image: workshopregistry.azurecr.io/dockerworkshopapp:v2.2.6
         container_name: docker-workshop
         deploy:
             replicas: 1
@@ -16,8 +16,8 @@ services:
         networks:
             - default
 
-    another-docker-workshop:
-        image: workshopregistry.azurecr.io/anotherdockerworkshopapp:v2.0.8
+    another_docker_workshop:
+        image: workshopregistry.azurecr.io/anotherdockerworkshopapp:v2.1.1
         container_name: another-docker-workshop
         deploy:
             replicas: 1
@@ -26,7 +26,9 @@ services:
                     cpus: "0.25"
                     memory: "50M"
             restart_policy:
-                condition: "on-failure"                 
+                condition: "on-failure"
+        expose:
+            - "7007"            
         networks:
             - default
 networks:

@@ -4,7 +4,7 @@ const Express = require('express');
 const BodyParser = require('body-parser');
 const Http = require("http");
 const HttpsClient = require("request");
-const Redis = require("redis");
+// const DotENV = require("dotenv");
 
 const _express = Express();
 const _httpServer = Http.createServer(_express);
@@ -23,6 +23,8 @@ _express.use(BodyParser.urlencoded
 
 }));
 
+// DotENV.config();
+
 _express.get('/api', (req, res) =>
 {
 
@@ -30,7 +32,7 @@ _express.get('/api', (req, res) =>
     {
 
         "json" : true,
-        "url" : "http://another-docker-workshop:7007/api",        
+        "url" : "http://localhost:7007/api",
         "method" : "GET"
 
     };
@@ -38,7 +40,7 @@ _express.get('/api', (req, res) =>
     HttpsClient(options, (error, response, responseBody) =>
     {
                 
-        res.send('This is dockerworkhop GET\n' + responseBody);
+        res.send('dockerworkhop GET --- \n' + responseBody);
 
     });
     
@@ -47,20 +49,16 @@ _express.get('/api', (req, res) =>
 _express.post('/api/post', (req, res) =>
 {
     
-<<<<<<< HEAD:dockerserver.js
     res.send('This is dockerworkhop POST\n');
-=======
-    res.send('This is another workshop_docker POST\n');
->>>>>>> ee57a437999cf6aa4d7633a6dece80d90425b70b:anotherdockerserver.js
 
 });
 
-let port = process.env.PORT || 7007;
+let port = process.env.PORT || 7005;
 let host = "0.0.0.0";
 _httpServer.listen(port, host, function ()
 {
 
-    console.log(`Another Docker container started the server on port ${_httpServer.address().port}\n`);
+    console.log(`Docker container started the server on port ${_httpServer.address().port}\n`);
 
 });
 

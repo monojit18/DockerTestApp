@@ -1,12 +1,12 @@
 {
   "name": "dockerworkshopapp",
-  "version": "2.2.4",
+  "version": "2.4.4",
   "description": "Test Another Docker",
   "main": "dockerserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "mkdir -p logs",
-    "install": "npm install --save-dev express body-parser request redis",
+    "install": "npm install --save-dev express body-parser request dotenv",
     "start": "node dockerserver.js 1> logs/dockerserver.log 2>& 1"
   },
   "keywords": [
@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "request": "^2.88.0",
     "semaphore": "^1.1.0"

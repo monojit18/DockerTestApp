@@ -4,6 +4,9 @@ metadata:
   name: docker-workshop
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: docker_workshop_app
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -16,7 +19,7 @@ spec:
     spec:      
       containers:      
       - name: docker-workshop
-        image: workshopregistry.azurecr.io/dockerworkshopapp:v2.2.3
+        image: workshopregistry.azurecr.io/dockerworkshopapp:v2.4.0
         ports:
         - containerPort: 7005
         resources:
@@ -26,7 +29,7 @@ spec:
             cpu: "0.25"
             memory: "50M"  
       imagePullSecrets:
-      - name: workshopregcred
+      - name: workshopaksregcred
 
 ---
 apiVersion: v1
@@ -34,7 +37,7 @@ kind: Service
 metadata:
   name: docker-workshop
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:  
   - port: 7005
   selector:
@@ -47,6 +50,9 @@ metadata:
   name: another-docker-workshop
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: another_docker_workshop_app
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -59,7 +65,7 @@ spec:
     spec:      
       containers:      
       - name: another-docker-workshop
-        image: workshopregistry.azurecr.io/anotherdockerworkshopapp:v2.1.0
+        image: workshopregistry.azurecr.io/anotherdockerworkshopapp:v2.1.7
         ports:
         - containerPort: 7007
         resources:
@@ -69,7 +75,7 @@ spec:
             cpu: "0.25"
             memory: "50M"
       imagePullSecrets:
-      - name: workshopregcred
+      - name: workshopaksregcred
 
 ---
 apiVersion: v1
