@@ -3,11 +3,20 @@
 const Express = require('express');
 const BodyParser = require('body-parser');
 const Http = require("http");
+// const Https = require("https");
 const HttpsClient = require("request");
-// const DotENV = require("dotenv");
+const DotEnv = require("dotenv");
+// const Crypto = require("crypto");
+// const FS = require("fs");
+
+// var options = {
+//     key: FS.readFileSync("client-key.pem"),
+//     cert: FS.readFileSync("client-cert.pem")
+//   };
 
 const _express = Express();
 const _httpServer = Http.createServer(_express);
+// const _httpServer = Https.createServer(options, _express);
 
 _express.use(BodyParser.json
 ({
@@ -23,7 +32,7 @@ _express.use(BodyParser.urlencoded
 
 }));
 
-// DotENV.config();
+DotEnv.config();
 
 _express.get('/api', (req, res) =>
 {
@@ -32,7 +41,7 @@ _express.get('/api', (req, res) =>
     {
 
         "json" : true,
-        "url" : "http://localhost:7007/api",
+        "url" : process.env.ANOTHER_API_URL,
         "method" : "GET"
 
     };
@@ -44,6 +53,13 @@ _express.get('/api', (req, res) =>
 
     });
     
+});
+
+_express.get('/', (req, res) =>
+{
+    
+    res.send('This is dockerworkhop GET --- root\n');
+
 });
 
 _express.post('/api/post', (req, res) =>

@@ -12,6 +12,6 @@ RUN npm install --unsafe-perm
 
 COPY . ${WORKDIR_PATH}
 
-EXPOSE 7007
+EXPOSE 7005
 
 CMD npm start
