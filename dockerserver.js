@@ -69,7 +69,7 @@ _express.post('/api/post', (req, res) =>
 
 });
 
-let port = process.env.PORT || 7005;
+let port = process.env.PORT || 80;
 let host = "0.0.0.0";
 _httpServer.listen(port, host, function ()
 {
