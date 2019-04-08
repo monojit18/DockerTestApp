@@ -48,7 +48,7 @@ _express.get('/api', (req, res) =>
 
     HttpsClient(options, (error, response, responseBody) =>
     {
-                
+
         res.send('dockerworkhop GET --- \n' + responseBody);
 
     });
